@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // خلفية الشاشة الرئيسية
         canvasColor: const Color.fromRGBO(255, 254, 229, 1),
-        primaryColor: Colors.pink,
+        primaryColor: Colors.teal[100],
         colorScheme: const ColorScheme.light(),
         textTheme: const TextTheme(
             bodyText1: TextStyle(

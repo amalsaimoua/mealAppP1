@@ -27,7 +27,7 @@ class _categoryMealScreenState extends State<categoryMealScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+      
         title: Text('$catTitle'),
       ),
       body: ListView.builder(

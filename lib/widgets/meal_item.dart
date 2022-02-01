@@ -13,7 +13,7 @@ class mealItem extends StatelessWidget {
   final Affordability affordability;
   mealItem(
       {required this.id,
-        required this.imageURl,
+      required this.imageURl,
       required this.title,
       required this.duration,
       required this.complexity,
@@ -46,7 +46,10 @@ class mealItem extends StatelessWidget {
   }
 
   void selectMeal(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(mealDetailScreen.routeName,arguments: id);
+    Navigator.of(ctx).pushNamed(
+      mealDetailScreen.routeName,
+      arguments: id,
+    );
   }
 
   @override
