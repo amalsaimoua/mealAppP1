@@ -17,7 +17,7 @@ class mealDetailScreen extends StatelessWidget {
 
   Widget details(Widget child) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
+      margin: EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
         color: Colors.white,
@@ -77,6 +77,7 @@ class mealDetailScreen extends StatelessWidget {
                 itemCount: selectedMeal.steps.length,
               ),
             )
+          
           ],
         ),
       ),

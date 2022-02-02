@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mealapp/screens/filters_screen.dart';
 import './screens/categories_screen.dart';
 import './screens/category_meal_screen.dart';
 import './screens/meal_details_screen.dart';
+import 'screens/tabs_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
         // خلفية الشاشة الرئيسية
         canvasColor: const Color.fromRGBO(255, 254, 229, 1),
         primaryColor: Colors.teal[100],
-        colorScheme: const ColorScheme.light(),
+        fontFamily: 'Raleway',
         textTheme: const TextTheme(
             bodyText1: TextStyle(
               color: Color.fromRGBO(20, 50, 50, 1),
@@ -36,29 +38,31 @@ class MyApp extends StatelessWidget {
       ),
       // home: const CategororiesScreen(),
       routes: {
-        '/': (context) => const CategororiesScreen(),
+        '/': (context) => const tabsScreen(),
         categoryMealScreen.routeName: (context) => categoryMealScreen(),
         mealDetailScreen.routeName: (context) => mealDetailScreen(),
+        tabsScreen.routeName:(context) => const tabsScreen(),
+        FiltersScreen.routeName: (context) => FiltersScreen(),
       },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({Key? key}) : super(key: key);
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Meal App'),
-      ),
-      body: null,
-    );
-  }
-}
+// class _MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Meal App'),
+//       ),
+//       body: null,
+//     );
+//   }
+// }
