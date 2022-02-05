@@ -14,7 +14,7 @@ class _tabsScreenState extends State<tabsScreen> {
   List<Map<String, Object?>> pages = [
     {
       'page':  const CategoriesScreen(),
-      'title': 'categories',
+      'title': 'Meal categories',
     },
     {
       'page':  const favoritesScreen(),

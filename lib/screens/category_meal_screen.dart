@@ -7,23 +7,24 @@ import '../dummy_data.dart';
 
 class categoryMealScreen extends StatefulWidget {
   static const routeName = 'category_meals';
-
+  final List<Meal> __availableMeal;
+  categoryMealScreen(this.__availableMeal);
   @override
   _categoryMealScreenState createState() => _categoryMealScreenState();
 }
 
 class _categoryMealScreenState extends State<categoryMealScreen> {
-   String? categorytitle;
-   List<Meal> ?displayedMeals;
+  String? categorytitle;
+  List<Meal>? displayedMeals;
 
   @override
   void didChangeDependencies() {
     final routeArg =
         ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     final catId = routeArg['id'];
-   categorytitle = routeArg['title'];
+    categorytitle = routeArg['title'];
     //عملنا فلترة لل Dummy meals
-    displayedMeals = DUMMY_MEALS.where((meal) {
+    displayedMeals = widget.__availableMeal.where((meal) {
       // المتغير هنا يمر على كل عناصر الوجبات ويرى هل الآي دي
       // يطابق الآيدي الموجود معنا ف يعمله ارجاع return
       return meal.categories.contains(catId);
