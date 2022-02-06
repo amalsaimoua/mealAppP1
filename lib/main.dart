@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:mealapp/dummy_data.dart';
 import 'package:mealapp/moduls/meal.dart';
@@ -24,7 +26,18 @@ class _MyAppState extends State<MyApp> {
     'vegan': false,
     'vegeterian': false,
   };
+
   List<Meal> _availableMeal = DUMMY_MEALS;
+  List<Meal> _favoriteMeal = [];
+
+  void _toggleFavorite(String mealId){
+   final existingIndex= _favoriteMeal.indexWhere((meal) => meal.id==mealId);
+   
+   if (existingIndex >=0){
+     _favoriteMeal.removeAt(existingIndex);
+   } else {_favoriteMeal.add(DUMMY_MEALS.firstWhere((meal) => meal.id==mealId));}
+  }
+
   void saveFilters(Map<String, bool> _filtersData) {
     setState(() {
       _filters = _filtersData;
@@ -38,6 +51,10 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  bool isMealFavorite(String id) {
+    //returns either true or false
+    return  _favoriteMeal.any((meal) => meal.id==id);
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,11 +81,13 @@ class _MyAppState extends State<MyApp> {
       ),
       // home: const CategororiesScreen(),
       routes: {
-        '/': (context) => const tabsScreen(),
-        categoryMealScreen.routeName: (context) => categoryMealScreen(_availableMeal),
-        mealDetailScreen.routeName: (context) => mealDetailScreen(),
-        tabsScreen.routeName: (context) => const tabsScreen(),
-        FiltersScreen.routeName: (context) => FiltersScreen(saveFilters),
+        '/': (context) => tabsScreen(_favoriteMeal),
+        categoryMealScreen.routeName: (context) =>
+            categoryMealScreen(_availableMeal),
+        mealDetailScreen.routeName: (context) =>
+            mealDetailScreen(_toggleFavorite, isMealFavorite),
+        tabsScreen.routeName: (context) => tabsScreen(_favoriteMeal),
+        FiltersScreen.routeName: (context) => FiltersScreen(saveFilters,_filters),
       },
     );
   }
